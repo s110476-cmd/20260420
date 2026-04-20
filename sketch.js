@@ -34,7 +34,11 @@ function draw() {
   let y = (height - videoH) / 2;
   
   // 在畫布中央顯示攝影機影像
-  image(capture, x, y, videoW, videoH);
+  push();
+  translate(x + videoW, y); // 移至影像顯示區域的右上角
+  scale(-1, 1);             // 水平鏡像翻轉
+  image(capture, 0, 0, videoW, videoH);
+  pop();
 }
 
 // 當視窗大小改變時，自動更新畫布大小
