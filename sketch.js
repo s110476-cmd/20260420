@@ -4,8 +4,18 @@ function setup() {
   // 建立全螢幕畫布
   createCanvas(windowWidth, windowHeight);
   
+  // 設定攝影機參數，增加行動裝置相容性
+  let constraints = {
+    video: {
+      facingMode: "user" // 使用前鏡頭。若要使用後鏡頭請改為 "environment"
+    },
+    audio: false
+  };
+
   // 擷取攝影機影像
-  capture = createCapture(VIDEO);
+  capture = createCapture(constraints);
+  // 針對 iOS Safari 加入必要屬性，防止影片自動彈出全螢幕
+  capture.elt.setAttribute('playsinline', '');
   
   // 隱藏預設產生的 HTML5 video 元件，只在畫布上顯示
   capture.hide();
