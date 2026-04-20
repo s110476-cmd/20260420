@@ -29,14 +29,12 @@ function draw() {
   let videoW = width * 0.6;
   let videoH = height * 0.6;
   
-  // 計算置中位置
-  let x = (width - videoW) / 2;
-  let y = (height - videoH) / 2;
-  
-  // 在畫布中央顯示攝影機影像
+  // 使用居中對齊模式並進行鏡像處理
   push();
-  translate(x + videoW, y); // 移至影像顯示區域的右上角
-  scale(-1, 1);             // 水平鏡像翻轉
+  imageMode(CENTER);         // 設定圖片繪製基準點為中心
+  translate(width / 2, height / 2); // 移至畫布中心
+  scale(-1, 1);              // 水平鏡像翻轉 (若想取消鏡像，將 -1 改回 1)
+  // 繪製影像，座標設為 0, 0 是因為已經 translate 到中心點了
   image(capture, 0, 0, videoW, videoH);
   pop();
 }
