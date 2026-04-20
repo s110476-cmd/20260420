@@ -29,14 +29,12 @@ function draw() {
   let videoW = width * 0.6;
   let videoH = height * 0.6;
   
-  // 使用居中對齊模式並進行鏡像處理
-  push();
-  imageMode(CENTER);         // 設定圖片繪製基準點為中心
-  translate(width / 2, height / 2); // 移至畫布中心
-  scale(-1, 1);              // 使用 -1 啟動鏡像模式（舉左手時，畫面左邊會跟著動）
-  // 繪製影像，座標設為 0, 0 是因為已經 translate 到中心點了
-  image(capture, 0, 0, videoW, videoH);
-  pop();
+  // 計算置中位置
+  let x = (width - videoW) / 2;
+  let y = (height - videoH) / 2;
+  
+  // 在畫布中央顯示攝影機影像
+  image(capture, x, y, videoW, videoH);
 }
 
 // 當視窗大小改變時，自動更新畫布大小
