@@ -33,7 +33,7 @@ function draw() {
   push();
   imageMode(CENTER);         // 設定圖片繪製基準點為中心
   translate(width / 2, height / 2); // 移至畫布中心
-  scale(-1, 1);              // 水平鏡像翻轉 (若想取消鏡像，將 -1 改回 1)
+  scale(1, 1);               // 改為 1, 1 以顯示真實視角（不翻轉）
   // 繪製影像，座標設為 0, 0 是因為已經 translate 到中心點了
   image(capture, 0, 0, videoW, videoH);
   pop();
